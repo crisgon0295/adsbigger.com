@@ -11,6 +11,9 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+# El lockfile se genera con npm 11.x en desarrollo; se fija la misma versión
+# aqui para evitar discrepancias de resolucion entre npm 10 (bundled) y npm 11.
+RUN npm install -g npm@11
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
