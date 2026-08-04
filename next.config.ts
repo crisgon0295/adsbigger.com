@@ -48,6 +48,19 @@ const nextConfig: NextConfig = {
   },
   reactStrictMode: true,
   redirects,
+  // NOINDEX=true (staging) inyecta X-Robots-Tag en todas las respuestas para
+  // que buscadores no indexen el entorno antes del lanzamiento (Doc. 02).
+  async headers() {
+    if (process.env.NOINDEX === 'true') {
+      return [
+        {
+          source: '/:path*',
+          headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+        },
+      ]
+    }
+    return []
+  },
   turbopack: {
     root: path.resolve(dirname),
   },
