@@ -11,12 +11,15 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-# El lockfile se genera con npm 11.x en desarrollo; se fija la misma versión
-# aqui para evitar discrepancias de resolucion entre npm 10 (bundled) y npm 11.
-RUN npm install -g npm@11
+# NOTA: se usa "npm install" en vez de "npm ci". Algunas dependencias
+# opcionales de @payloadcms/richtext-lexical (yjs, monaco-editor,
+# testing-library) resuelven distinto entre Windows (donde se genera el
+# lockfile) y Linux/Alpine (donde se construye la imagen), lo que hace que
+# "npm ci" falle por EUSAGE aunque el lockfile este bien. "npm install"
+# sigue usando el lockfile como base pero reconcilia sin fallar.
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f package-lock.json ]; then npm install --no-audit --no-fund; \
   elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
   fi
