@@ -65,24 +65,32 @@ export default async function Page({ params: paramsPromise }: Args) {
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { pageNumber } = await paramsPromise
   return {
-    title: `Payload Website Template Posts Page ${pageNumber || ''}`,
+    title: `adsBigger — Blog, página ${pageNumber || ''}`,
   }
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const { totalDocs } = await payload.count({
-    collection: 'posts',
-    overrideAccess: false,
-  })
+  // La base de datos no esta disponible durante "docker build" en Dokploy
+  // (solo en runtime). Si no se puede conectar, se generan cero paginas en
+  // build-time y todas se renderizan dinamicamente en la primera visita.
+  try {
+    const payload = await getPayload({ config: configPromise })
+    const { totalDocs } = await payload.count({
+      collection: 'posts',
+      overrideAccess: false,
+    })
 
-  const totalPages = Math.ceil(totalDocs / 10)
+    const totalPages = Math.ceil(totalDocs / 10)
 
-  const pages: { pageNumber: string }[] = []
+    const pages: { pageNumber: string }[] = []
 
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push({ pageNumber: String(i) })
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push({ pageNumber: String(i) })
+    }
+
+    return pages
+  } catch (error) {
+    console.warn('generateStaticParams: no se pudo conectar a la base de datos, se omite prerender.', error)
+    return []
   }
-
-  return pages
 }

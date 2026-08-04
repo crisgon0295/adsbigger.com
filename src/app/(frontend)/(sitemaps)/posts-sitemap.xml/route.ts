@@ -3,6 +3,10 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
 
+// Forzado a dinamico: la base de datos no esta disponible durante
+// "docker build" en Dokploy (solo en runtime).
+export const dynamic = 'force-dynamic'
+
 const getPostsSitemap = unstable_cache(
   async () => {
     const payload = await getPayload({ config })
