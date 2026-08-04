@@ -1,8 +1,9 @@
-/* Hallmark · genre: modern-minimal · macrostructure: Narrative Workflow · theme: custom (marca adsBigger)
- * paper: #111111 Obsidian (dark) · display: DM Serif Display (roman) · accents: #D51A05 CTA / #179DFF datos (regla Matrix, nunca juntos en un bloque)
- * nav: N1b (links=3, dropdowns=none, frost-on-scroll) · footer: Ft5 Statement (28ch, wordmark bajo la frase, hairline)
- * F4 knobs: numbering=1/2/3/4, layout=grid-2col, connector=rule · enrichment: Threads WebGL rojo (fallback estático + reduced-motion)
- * Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 */
+/* Hallmark · redesign v2 "Instalación inmersiva" · genre: atmospheric-premium · macrostructure: Narrative Workflow (scroll-driven)
+ * studied: yes · DNA-sources: url (slider inmersivo industrial: numerales gigantes, rail de progreso, scrub) + url (industrial premium: renders dramáticos sobre oscuro, acento cálido puntual)
+ * paper: #111111 Obsidian · display: DM Serif Display (roman) · accents: #D51A05 CTA / #179DFF datos (regla Matrix)
+ * material: glass Apple (blur 24px + borde blanco/10 + luz interna) sobre glows ambientales · radius: 1.5rem cards / pill nav
+ * nav: N5 floating pill (redesign — antes N1b) · footer: Ft5 Statement (glass) · motion: GSAP ScrollTrigger (hero pin+scrub, pasos horizontales, rail 01–07)
+ * Hallmark · pre-emit critique: P4 H5 E4 S5 R4 V5 */
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -70,6 +71,49 @@
 }
 
 @layer utilities {
+  /* ── Sistema de material "Instalación inmersiva" (redesign v2) ──
+     Glass estilo Apple: blur real + borde translúcido + highlight interno.
+     El glass SOLO funciona con luz detrás — siempre acompañarlo de un glow. */
+  .glass {
+    border-radius: 1.5rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    background: rgb(255 255 255 / 0.05);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.09),
+      0 24px 70px -35px rgb(0 0 0 / 0.85);
+  }
+  .glass-deep {
+    border-radius: 1.5rem;
+    border: 1px solid rgb(255 255 255 / 0.08);
+    background: linear-gradient(160deg, rgb(255 255 255 / 0.08), rgb(255 255 255 / 0.02) 55%);
+    backdrop-filter: blur(28px) saturate(150%);
+    -webkit-backdrop-filter: blur(28px) saturate(150%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.12),
+      inset 0 -1px 0 rgb(0 0 0 / 0.3),
+      0 30px 80px -40px rgb(0 0 0 / 0.9);
+  }
+  /* Glows ambientales — la "luz" que hace legible el glass (regla Matrix:
+     rojo = tensión/CTA, azul = sistema/datos; nunca en el mismo bloque). */
+  .glow-ruptura {
+    background: radial-gradient(ellipse 55% 45% at 50% 30%, rgb(213 26 5 / 0.16), transparent 70%);
+  }
+  .glow-sistema {
+    background: radial-gradient(ellipse 55% 45% at 50% 40%, rgb(23 157 255 / 0.12), transparent 70%);
+  }
+  /* Numeral fantasma gigante (firma Orano-style de cada etapa) */
+  .ghost-numeral {
+    font-family: var(--font-display);
+    font-size: clamp(9rem, 26vw, 22rem);
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+    color: rgb(255 255 255 / 0.035);
+    user-select: none;
+    pointer-events: none;
+  }
+
   .container {
     width: 100%;
     margin-inline: auto;

@@ -1,6 +1,17 @@
 [
   {
     "date": "2026-08-04",
+    "macrostructure": "Narrative Workflow (scroll-driven)",
+    "theme": "studied-DNA + custom (marca adsBigger, material glass)",
+    "theme_axes": "dark / serif-display / dual-brand",
+    "vibe": "instalacion inmersiva, Apple-glass, scroll storytelling industrial",
+    "nav": "N5 floating pill (antes N1b)",
+    "footer": "Ft5 Statement",
+    "enrichment": "Threads WebGL + hero pin scrub + slider horizontal + rail 01-07",
+    "brief": "Redesign v2 de la Home por feedback del usuario (se veia hecha con IA)"
+  },
+  {
+    "date": "2026-08-04",
     "macrostructure": "Narrative Workflow",
     "theme": "custom",
     "theme_axes": "dark / serif-display / dual-brand (rojo CTA + azul datos, regla Matrix)",

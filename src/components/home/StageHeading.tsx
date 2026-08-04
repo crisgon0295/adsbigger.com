@@ -1,10 +1,10 @@
 import React from 'react'
 
 /**
- * Encabezado de etapa del Narrative Workflow: número grande en Rojo Ruptura
- * apilado SOBRE el título (nunca a la izquierda — regla hallmark gate 54),
- * con regla gruesa numerada como divisor de etapa. Numerado estilo Hormozi
- * del Brand System v2 (módulo 09).
+ * Encabezado de etapa v2 (redesign "Instalación inmersiva"): numeral fantasma
+ * gigante detrás del contenido (firma Orano-style), etiqueta en small caps y
+ * título display encima. El numeral es decorativo (aria-hidden) y nunca
+ * intercepta el puntero.
  */
 export function StageHeading({
   stage,
@@ -18,16 +18,21 @@ export function StageHeading({
   id?: string
 }) {
   return (
-    <header id={id} className="scroll-mt-24">
-      <div aria-hidden="true" className="flex items-baseline gap-4 border-t-2 border-border pt-6">
-        <span className="font-display text-5xl leading-none text-ruptura md:text-6xl">{stage}</span>
-        <span className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+    <header id={id} className="relative scroll-mt-28">
+      <span aria-hidden="true" className="ghost-numeral absolute -top-14 right-0 md:-top-24">
+        {stage}
+      </span>
+      <div className="relative">
+        <p className="flex items-center gap-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">
+          <span aria-hidden="true" className="font-display text-2xl leading-none text-ruptura">
+            {stage}
+          </span>
           {label}
-        </span>
+        </p>
+        <h2 className="mt-5 max-w-[22ch] text-balance font-display text-3xl leading-[1.08] tracking-tight text-foreground md:text-5xl">
+          {titulo}
+        </h2>
       </div>
-      <h2 className="mt-6 max-w-[24ch] font-display text-3xl leading-[1.1] tracking-tight text-foreground md:text-5xl">
-        {titulo}
-      </h2>
     </header>
   )
 }
