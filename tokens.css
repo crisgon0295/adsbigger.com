@@ -1,0 +1,42 @@
+/* Hallmark · tokens portables de adsBigger (espejo documental del @theme en
+ * src/app/(frontend)/globals.css — la fuente viva es Tailwind v4; este archivo
+ * hace el sistema portable a otros proyectos de la marca).
+ * Fuente de verdad de los valores: Brand System v2, módulos 07–08. */
+:root {
+  /* Color — paleta primaria */
+  --color-obsidian: #111111; /* fondo principal (dark-first) */
+  --color-ruptura: #d51a05; /* SOLO urgencia y CTA — regla Matrix */
+  --color-sistema: #179dff; /* SOLO datos, proceso, focus — regla Matrix */
+  --color-blanco: #ffffff;
+  /* Color — secundaria */
+  --color-profundo: #0d3dd9; /* solo en gradiente 135° con sistema */
+  --color-paper: #f4f4f2; /* secciones claras alternadas */
+  --color-tinta: #1a1a1a; /* texto sobre claro / superficie elevada */
+  --color-secundario: #555555; /* captions, meta */
+  --color-rule: #2a2a2a; /* hairlines sobre Obsidian */
+
+  /* Tipografía */
+  --font-display: 'DM Serif Display', serif; /* titulares, roman, tracking -2% */
+  --font-sans: 'DM Sans', sans-serif; /* cuerpo, UI */
+
+  /* Espaciado — múltiplos de 8 (regla de los 8s) sobre escala 4pt de Tailwind */
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 4rem;
+  --space-3xl: 7rem;
+
+  /* Motion — corte firme, nunca bounce */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.64, 0, 0.78, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-reveal: 500ms;
+
+  /* Reglas y radios */
+  --rule-hair: 1px;
+  --rule-stage: 2px; /* divisor grueso de etapa (Narrative Workflow) */
+  --radius-none: 0; /* la marca es de esquinas duras — sin radios en CTAs */
+}

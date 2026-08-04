@@ -1,0 +1,13 @@
+[
+  {
+    "date": "2026-08-04",
+    "macrostructure": "Narrative Workflow",
+    "theme": "custom",
+    "theme_axes": "dark / serif-display / dual-brand (rojo CTA + azul datos, regla Matrix)",
+    "vibe": "instalación por etapas, raw tech, obsidian y ruta roja",
+    "nav": "N1b (links=3, dropdowns=none, frost-on-scroll)",
+    "footer": "Ft5 Statement (28ch, wordmark bajo la frase)",
+    "enrichment": "Threads WebGL rojo (React Bits) — fallback estático",
+    "brief": "adsbigger.com Home · empleados de IA para pymes · copy Doc. 04 v1.3"
+  }
+]

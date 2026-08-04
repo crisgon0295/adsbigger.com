@@ -18,7 +18,7 @@ import { getServerSideURL } from '@/utilities/getURL'
 const dmSerifDisplay = DM_Serif_Display({
   subsets: ['latin'],
   weight: ['400'],
-  variable: '--font-display',
+  variable: '--font-display-brand',
   display: 'swap',
 })
 

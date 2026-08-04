@@ -1,3 +1,8 @@
+/* Hallmark · genre: modern-minimal · macrostructure: Narrative Workflow · theme: custom (marca adsBigger)
+ * paper: #111111 Obsidian (dark) · display: DM Serif Display (roman) · accents: #D51A05 CTA / #179DFF datos (regla Matrix, nunca juntos en un bloque)
+ * nav: N1b (links=3, dropdowns=none, frost-on-scroll) · footer: Ft5 Statement (28ch, wordmark bajo la frase, hairline)
+ * F4 knobs: numbering=1/2/3/4, layout=grid-2col, connector=rule · enrichment: Threads WebGL rojo (fallback estático + reduced-motion)
+ * Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 */
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -49,7 +54,7 @@
 
   /* Tipografía — Brand System v2, módulo 08 */
   --font-sans: var(--font-sans-brand);
-  --font-display: var(--font-display);
+  --font-display: var(--font-display-brand);
 
   /* Paleta de marca — Brand System v2, módulo 07 / Visual Brain, módulo 04.
      Utilidades directas (bg-obsidian, text-ruptura, etc.) además de los
@@ -230,8 +235,26 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html,
+  body {
+    overflow-x: clip; /* gate 34: nunca scroll horizontal; clip, no hidden */
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
   body {
     @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+  }
+  h1,
+  h2,
+  h3 {
+    overflow-wrap: anywhere; /* gate 51: displays largos no desbordan en móvil */
+    min-width: 0;
   }
 }
 

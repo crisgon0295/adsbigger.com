@@ -1,0 +1,10 @@
+{
+  "date": "2026-08-04",
+  "fonts": "DM Serif Display (--font-display) + DM Sans (--font-sans-brand) via next/font — src/app/(frontend)/layout.tsx",
+  "palette": "Brand tokens en @theme: obsidian #111111, ruptura #D51A05, sistema #179DFF, profundo #0D3DD9, paper #F4F4F2, tinta #1A1A1A, secundario #555555 — src/app/(frontend)/globals.css. shadcn semantic vars mapeadas a marca (dark-first).",
+  "motion": "motion-cut hasta ahora (sin framer-motion/gsap). React Bits agregara gsap/ogl puntualmente.",
+  "spacing": "Tailwind v4 default (escala 4pt) — regla de los 8s de marca aplicada via multiplos",
+  "framework": "Next.js 16 app router + Payload CMS 3 + Tailwind v4 + shadcn/ui",
+  "preserve": ["fonts", "palette", "spacing", "globals.css append-only"],
+  "notes": "Sitio dark-first fijo por marca (defaultTheme=dark). Regla Matrix: rojo solo CTA/urgencia, azul solo datos/sistemas. 80/10/10."
+}
