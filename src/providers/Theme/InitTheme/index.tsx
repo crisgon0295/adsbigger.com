@@ -10,18 +10,9 @@ export const InitTheme: React.FC = () => {
       dangerouslySetInnerHTML={{
         __html: `
   (function () {
-    function getImplicitPreference() {
-      var mediaQuery = '(prefers-color-scheme: dark)'
-      var mql = window.matchMedia(mediaQuery)
-      var hasImplicitPreference = typeof mql.matches === 'boolean'
-
-      if (hasImplicitPreference) {
-        return mql.matches ? 'dark' : 'light'
-      }
-
-      return null
-    }
-
+    // adsBigger es dark-first por marca (Obsidian #111111): a diferencia del
+    // template base, NO se respeta prefers-color-scheme del sistema — solo
+    // una preferencia explícita guardada por el propio usuario la anula.
     function themeIsValid(theme) {
       return theme === 'light' || theme === 'dark'
     }
@@ -31,12 +22,6 @@ export const InitTheme: React.FC = () => {
 
     if (themeIsValid(preference)) {
       themeToSet = preference
-    } else {
-      var implicitPreference = getImplicitPreference()
-
-      if (implicitPreference) {
-        themeToSet = implicitPreference
-      }
     }
 
     document.documentElement.setAttribute('data-theme', themeToSet)

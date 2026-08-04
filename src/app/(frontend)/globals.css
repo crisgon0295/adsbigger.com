@@ -17,8 +17,11 @@
   h4,
   h5,
   h6 {
+    font-family: var(--font-display);
     font-weight: unset;
     font-size: unset;
+    letter-spacing: -0.02em; /* tracking -2% en titulares, Brand System v2 mod. 08 */
+    line-height: 1.1;
   }
 }
 
@@ -43,8 +46,22 @@
   --breakpoint-lg: 64rem;
   --breakpoint-xl: 80rem;
   --breakpoint-2xl: 86rem;
-  --font-mono: var(--font-geist-mono);
-  --font-sans: var(--font-geist-sans);
+
+  /* Tipografía — Brand System v2, módulo 08 */
+  --font-sans: var(--font-sans-brand);
+  --font-display: var(--font-display);
+
+  /* Paleta de marca — Brand System v2, módulo 07 / Visual Brain, módulo 04.
+     Utilidades directas (bg-obsidian, text-ruptura, etc.) además de los
+     tokens semánticos shadcn de abajo. Regla Matrix: rojo = urgencia/CTA,
+     azul = sistemas/datos. Nunca combinar los dos acentos en un mismo bloque. */
+  --color-obsidian: #111111;
+  --color-ruptura: #d51a05;
+  --color-sistema: #179dff;
+  --color-profundo: #0d3dd9;
+  --color-paper: #f4f4f2;
+  --color-tinta: #1a1a1a;
+  --color-secundario: #555555;
 }
 
 @layer utilities {
@@ -86,81 +103,85 @@
   }
 }
 
+/* :root = fallback "light" — se usa solo para bloques de sección clara
+   explícitos (ritmo oscuro→claro→oscuro del Visual Brain, módulo 08),
+   nunca como tema global: el sitio es dark-first (ver defaultTheme). */
 :root {
-  --background: oklch(100% 0 0deg);
-  --foreground: oklch(14.5% 0 0deg);
-  --card: oklch(96.5% 0.005 265deg);
-  --card-foreground: oklch(14.5% 0 0deg);
-  --popover: oklch(100% 0 0deg);
-  --popover-foreground: oklch(14.5% 0 0deg);
-  --primary: oklch(20.5% 0 0deg);
-  --primary-foreground: oklch(98.5% 0 0deg);
-  --secondary: oklch(97% 0 0deg);
-  --secondary-foreground: oklch(20.5% 0 0deg);
-  --muted: oklch(97% 0 0deg);
-  --muted-foreground: oklch(55.6% 0 0deg);
-  --accent: oklch(97% 0 0deg);
-  --accent-foreground: oklch(20.5% 0 0deg);
-  --destructive: oklch(57.7% 0.245 27.325deg);
-  --destructive-foreground: oklch(57.7% 0.245 27.325deg);
-  --border: oklch(92.2% 0 0deg);
-  --input: oklch(92.2% 0 0deg);
-  --ring: oklch(70.8% 0 0deg);
-  --chart-1: oklch(64.6% 0.222 41.116deg);
-  --chart-2: oklch(60% 0.118 184.704deg);
-  --chart-3: oklch(39.8% 0.07 227.392deg);
-  --chart-4: oklch(82.8% 0.189 84.429deg);
-  --chart-5: oklch(76.9% 0.188 70.08deg);
-  --radius: 0.625rem;
-  --sidebar: oklch(98.5% 0 0deg);
-  --sidebar-foreground: oklch(14.5% 0 0deg);
-  --sidebar-primary: oklch(20.5% 0 0deg);
-  --sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --sidebar-accent: oklch(97% 0 0deg);
-  --sidebar-accent-foreground: oklch(20.5% 0 0deg);
-  --sidebar-border: oklch(92.2% 0 0deg);
-  --sidebar-ring: oklch(70.8% 0 0deg);
+  --background: #f4f4f2; /* Gris Paper */
+  --foreground: #1a1a1a; /* Negro Tinta */
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #d51a05; /* Rojo Ruptura — CTA/urgencia, regla Matrix */
+  --primary-foreground: #ffffff;
+  --secondary: #179dff; /* Azul Sistema — datos/claridad, regla Matrix */
+  --secondary-foreground: #ffffff;
+  --muted: #e9e9e6;
+  --muted-foreground: #555555;
+  --accent: #ececeb;
+  --accent-foreground: #111111;
+  --destructive: #d51a05;
+  --destructive-foreground: #ffffff;
+  --border: #dcdcd9;
+  --input: #dcdcd9;
+  --ring: #179dff;
+  --chart-1: #179dff;
+  --chart-2: #0d3dd9;
+  --chart-3: #d51a05;
+  --chart-4: #555555;
+  --chart-5: #1a1a1a;
+  --radius: 0.375rem;
+  --sidebar: #f4f4f2;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #d51a05;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ececeb;
+  --sidebar-accent-foreground: #111111;
+  --sidebar-border: #dcdcd9;
+  --sidebar-ring: #179dff;
   --success: oklch(78% 0.08 200deg);
   --warning: oklch(89% 0.1 75deg);
-  --error: oklch(75% 0.15 25deg);
+  --error: #d51a05;
 }
 
+/* Tema base del sitio público — Obsidian (Brand System v2, módulo 07). */
 [data-theme='dark'] {
-  --background: oklch(14.5% 0 0deg);
-  --foreground: oklch(98.5% 0 0deg);
-  --card: oklch(17% 0 0deg);
-  --card-foreground: oklch(98.5% 0 0deg);
-  --popover: oklch(14.5% 0 0deg);
-  --popover-foreground: oklch(98.5% 0 0deg);
-  --primary: oklch(98.5% 0 0deg);
-  --primary-foreground: oklch(20.5% 0 0deg);
-  --secondary: oklch(26.9% 0 0deg);
-  --secondary-foreground: oklch(98.5% 0 0deg);
-  --muted: oklch(26.9% 0 0deg);
-  --muted-foreground: oklch(70.8% 0 0deg);
-  --accent: oklch(26.9% 0 0deg);
-  --accent-foreground: oklch(98.5% 0 0deg);
-  --destructive: oklch(39.6% 0.141 25.723deg);
-  --destructive-foreground: oklch(63.7% 0.237 25.331deg);
-  --border: oklch(26.9% 0 0deg);
-  --input: oklch(26.9% 0 0deg);
-  --ring: oklch(43.9% 0 0deg);
-  --chart-1: oklch(48.8% 0.243 264.376deg);
-  --chart-2: oklch(69.6% 0.17 162.48deg);
-  --chart-3: oklch(76.9% 0.188 70.08deg);
-  --chart-4: oklch(62.7% 0.265 303.9deg);
-  --chart-5: oklch(64.5% 0.246 16.439deg);
-  --sidebar: oklch(20.5% 0 0deg);
-  --sidebar-foreground: oklch(98.5% 0 0deg);
-  --sidebar-primary: oklch(48.8% 0.243 264.376deg);
-  --sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --sidebar-accent: oklch(26.9% 0 0deg);
-  --sidebar-accent-foreground: oklch(98.5% 0 0deg);
-  --sidebar-border: oklch(26.9% 0 0deg);
-  --sidebar-ring: oklch(43.9% 0 0deg);
+  --background: #111111; /* Obsidian */
+  --foreground: #ffffff;
+  --card: #1a1a1a; /* Negro Tinta — superficie elevada */
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  --primary: #d51a05; /* Rojo Ruptura — único color de CTA */
+  --primary-foreground: #ffffff;
+  --secondary: #179dff; /* Azul Sistema — único color de datos/sistemas */
+  --secondary-foreground: #ffffff;
+  --muted: #1f1f1f;
+  --muted-foreground: #a3a3a3;
+  --accent: #1f1f1f;
+  --accent-foreground: #ffffff;
+  --destructive: #d51a05;
+  --destructive-foreground: #ffffff;
+  --border: #2a2a2a;
+  --input: #2a2a2a;
+  --ring: #179dff;
+  --chart-1: #179dff;
+  --chart-2: #0d3dd9;
+  --chart-3: #d51a05;
+  --chart-4: #a3a3a3;
+  --chart-5: #ffffff;
+  --sidebar: #111111;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #d51a05;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1f1f1f;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #2a2a2a;
+  --sidebar-ring: #179dff;
   --success: oklch(28% 0.1 200deg);
   --warning: oklch(35% 0.08 70deg);
-  --error: oklch(45% 0.1 25deg);
+  --error: #d51a05;
 }
 
 @theme inline {
